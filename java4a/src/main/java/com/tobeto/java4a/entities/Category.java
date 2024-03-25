@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Category
 {
     @Column(name="id")
@@ -25,9 +26,8 @@ public class Category
     private String name;
 
     //Bir kategorinin birden fazla ürünü vardır.
-    //mappedBy => Bu ilişki diğer classta hangi değişken ile tanımlı o belirtilir. Eşleşme sağlanır.
+    //mappedBy -> Bu ilişki diğer classta hangi değişken ile tanımlı o belirtilir. Eşleşme sağlanır.
     @OneToMany(mappedBy = "category") //İlişki kurduğumuz diğer taraftaki değişkenin ismi verilir.
     @JsonIgnore
-    private List<Product> product;
-
+    private List<Product> products;
 }

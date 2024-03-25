@@ -14,24 +14,13 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Address
 {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @ManyToOne
-    @JoinColumn(name="country_id")
-    private Country country;
-
-    @ManyToOne
-    @JoinColumn(name="city_id")
-    private City city;
-
-    @ManyToOne
-    @JoinColumn(name="district_id")
-    private District district;
 
     @Column(name="name")
     private String name;
@@ -44,6 +33,18 @@ public class Address
 
     @OneToMany(mappedBy = "deliveryAddress")
     private List<Order> orders;
+
+    @ManyToOne
+    @JoinColumn(name="country_id")
+    private Country country;
+
+    @ManyToOne
+    @JoinColumn(name="city_id")
+    private City city;
+
+    @ManyToOne
+    @JoinColumn(name="district_id")
+    private District district;
 
     @ManyToMany(mappedBy = "addresses")
     private List<User> users;

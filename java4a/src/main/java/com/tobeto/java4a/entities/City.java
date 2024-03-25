@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class City
 {
     @Column(name="id")
@@ -24,13 +25,13 @@ public class City
     @Column(name="name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name="country_id")
-    private Country country;
-
     @OneToMany(mappedBy = "city")
     private List<Address> addresses;
 
     @OneToMany(mappedBy = "city")
     private List<District> districts;
+
+    @ManyToOne
+    @JoinColumn(name="country_id")
+    private Country country;
 }

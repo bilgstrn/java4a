@@ -16,21 +16,13 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Order
 {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @ManyToOne
-    @JoinColumn(name="customer_id")
-    private Customer customer;
-
-
-    @ManyToOne
-    @JoinColumn(name="delivery_address_id")
-    private Address deliveryAddress;
 
     @Column(name="total_amount")
     private double totalAmount;
@@ -44,10 +36,18 @@ public class Order
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails;
 
+    @OneToMany(mappedBy = "order")
+    private List<Shipment> shipments;
+
     @ManyToOne
     @JoinColumn(name="payment_id")
     private Payment payment;
 
-    @OneToMany(mappedBy = "order")
-    private List<Shipment> shipments;
+    @ManyToOne
+    @JoinColumn(name="customer_id")
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name="delivery_address_id")
+    private Address deliveryAddress;
 }

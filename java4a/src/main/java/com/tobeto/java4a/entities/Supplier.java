@@ -15,16 +15,13 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Supplier
 {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @OneToOne
-    @JoinColumn(name="user_id")
-    private User user;
 
     @Column(name="company_name")
     private String companyName;
@@ -37,4 +34,8 @@ public class Supplier
 
     @OneToMany(mappedBy = "supplier")
     private List<Product> products;
+
+    @OneToOne
+    @JoinColumn(name="user_id")
+    private User user;
 }

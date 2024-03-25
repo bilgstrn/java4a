@@ -15,20 +15,13 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Comment
 {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @ManyToOne
-    @JoinColumn(name="product_id")
-    private Product product;
-
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
 
     @Column(name="comment")
     private String comment;
@@ -38,4 +31,12 @@ public class Comment
 
     @Column(name="rating")
     private BigDecimal rating;
+
+    @ManyToOne
+    @JoinColumn(name="product_id")
+    private Product product;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 }

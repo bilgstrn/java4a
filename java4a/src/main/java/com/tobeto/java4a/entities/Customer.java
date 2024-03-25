@@ -15,6 +15,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Customer
 {
     @Column(name="id")
@@ -22,12 +23,12 @@ public class Customer
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name="registration_date")
+    private LocalDate registrationDate;
+
     @OneToOne
     @JoinColumn(name="user_id")
     private User user;
-
-    @Column(name="registration_date")
-    private LocalDate registrationDate;
 
     @OneToMany(mappedBy = "customer")
     private List<Order> orders;

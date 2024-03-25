@@ -16,6 +16,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Payment
 {
     @Column(name="id")
@@ -23,16 +24,16 @@ public class Payment
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name="payment_date")
+    private LocalDate paymentDate;
+
+    @Column(name="amount")
+    private BigDecimal amount;
+
     @OneToMany(mappedBy = "payment")
     private List<Order> orders;
 
     @ManyToOne
     @JoinColumn(name="payment_method_id")
     private PaymentMethod paymentMethod;
-
-    @Column(name="payment_date")
-    private LocalDate paymentDate;
-
-    @Column(name="amount")
-    private BigDecimal amount;
 }

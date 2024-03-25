@@ -32,14 +32,12 @@ public class CategoriesController
         categoryRepository.save(category);
         return "Başarıyla Eklendi.";
     }
-
     @PutMapping
     public String update(@RequestBody Category category)
     {
         categoryRepository.save(category);
         return "Başarıyla Güncellendi";
     }
-
     @DeleteMapping
     public String delete(@RequestParam int id)
     {

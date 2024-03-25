@@ -15,16 +15,13 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Shipment
 {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @ManyToOne
-    @JoinColumn(name="shipping_company_id")
-    private ShippingCompany shippingCompany;
 
     @Column(name="shipment_date")
     private LocalDate shipmentDate;
@@ -38,4 +35,8 @@ public class Shipment
     @ManyToOne
     @JoinColumn(name="order_id")
     private Order order;
+
+    @ManyToOne
+    @JoinColumn(name="shipping_company_id")
+    private ShippingCompany shippingCompany;
 }
